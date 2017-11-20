@@ -24,7 +24,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.article.create');
     }
 
     /**
@@ -57,7 +57,7 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.article.edit');
     }
 
     /**
