@@ -7,8 +7,5 @@
 <!-- Custom CSS -->
 <link href="{{ asset('assets/dist/css/sb-admin-2.css') }}" rel="stylesheet">
 
-<!-- Morris Charts CSS -->
-<link href="{{ asset('assets/vendor/morrisjs/morris.css') }}" rel="stylesheet">
-
 <!-- Custom Fonts -->
 <link href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">

@@ -25,20 +25,6 @@ class CategoryController extends Controller
         return view('admin.category.index', $data);
     }
 
-    public function tree(array $data,$pid = 0,$level = 0) {
-        static $tree = [];
-
-        foreach($data as $k=>$v){
-            if($v['pid'] == $pid) {
-              $v['level'] = $level;
-              $tree[]=$v;
-              $this->tree($data, $v['id'], $level + 1);
-            }
-        }
-
-        return $tree;
-     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -47,7 +33,7 @@ class CategoryController extends Controller
     public function create(Request $request)
     {
 
-        $categories = $this->tree(Category::all()->toArray());
+        $categories = tree(Category::all()->toArray());
 
         return view('admin.category.create', compact('categories'));
     }
@@ -94,7 +80,7 @@ class CategoryController extends Controller
         $data = [];
 
         $data['category'] = Category::findOrFail($id);
-        $data['categories'] = $this->tree(Category::all()->toArray());
+        $data['categories'] = tree(Category::all()->toArray());
 
         return view('admin.category.edit', $data);
     }
