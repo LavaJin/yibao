@@ -136,6 +136,6 @@ class CategoryController extends Controller
 
         $category->delete();
 
-        return redirect()->route('categories.index')->with('success', '修改成功');
+        return redirect()->route('categories.index')->with('success', '删除成功');
     }
 }
