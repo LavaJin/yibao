@@ -2,29 +2,54 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
+
+    const DEFAULT_ROW = 20;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.category.index');
+        $data = [];
+
+        $data['categories'] = Category::paginate(self::DEFAULT_ROW);
+
+        return view('admin.category.index', $data);
     }
+
+    public function tree(array $data,$pid = 0,$level = 0) {
+        static $tree = [];
+
+        foreach($data as $k=>$v){
+            if($v['pid'] == $pid) {
+              $v['level'] = $level;
+              $tree[]=$v;
+              $this->tree($data, $v['id'], $level + 1);
+            }
+        }
+
+        return $tree;
+     }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('admin.category.create');
+
+        $categories = $this->tree(Category::all()->toArray());
+
+        return view('admin.category.create', compact('categories'));
     }
 
     /**
@@ -35,8 +60,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(
+            $request,
+            ['name' => ['required', 'unique:categories']],
+            ['name.required' => '栏目名不能为空', 'name.unique' => '栏目名已存在']
+        );
+
+        Category::create($request->all());
+
+        return redirect()->route('categories.index')->with('success', '创建成功');
     }
+
 
     /**
      * Display the specified resource.
@@ -57,7 +91,12 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.category.edit');
+        $data = [];
+
+        $data['category'] = Category::findOrFail($id);
+        $data['categories'] = $this->tree(Category::all()->toArray());
+
+        return view('admin.category.edit', $data);
     }
 
     /**
@@ -69,7 +108,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $this->validate(
+            $request,
+            ['name' => ['required', Rule::unique('categories')->ignore($id)]],
+            ['name.required' => '栏目名不能为空', 'name.unique' => '栏目名已存在']
+        );
+
+        Category::findOrFail($id)->update($request->all());
+
+        return redirect()->route('categories.index')->with('success', '修改成功');
     }
 
     /**
@@ -80,6 +128,14 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        if (Category::hasChild($category->id)) {
+            return back()->with('error', '该栏目下面有子栏目，不能进行删除');
+        }
+
+        $category->delete();
+
+        return redirect()->route('categories.index')->with('success', '修改成功');
     }
 }

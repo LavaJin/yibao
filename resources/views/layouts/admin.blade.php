@@ -25,7 +25,34 @@
 
     <div id="page-wrapper">
 
-        <div class="row">@yield('content')</div>
+        <div class="row">
+            <div style="margin-top: 30px;">
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        <ul>
+                            <li>{{ session('success') }}</li>
+                        </ul>
+                    </div>
+                @endif
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        <ul>
+                            <li>{{ session('error') }}</li>
+                        </ul>
+                    </div>
+                @endif
+            </div>
+            @yield('content')
+        </div>
 
     </div>
 

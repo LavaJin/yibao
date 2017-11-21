@@ -31,7 +31,7 @@ Route::group([
     /**
      * article routes.
      */
-    $route->resource('articles', 'ArticleController');
+    $route->resource('news', 'NewsController');
 
     /**
      * category routes.

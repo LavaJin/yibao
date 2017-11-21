@@ -61,7 +61,7 @@
                             <a href="{{ route('categories.index') }}">栏目管理</a>
                         </li>
                         <li>
-                            <a href="{{ route('articles.index') }}">文章管理</a>
+                            <a href="{{ route('news.index') }}">新闻管理</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
