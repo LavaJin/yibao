@@ -11,12 +11,18 @@
             <a class="btn btn-default btn-sm" href="{{ route('categories.index') }}">返回</a>
         </div>
         <div class="panel-body">
-            <div class="col-md-8">
-                <form action="{{ route('news.store') }}" method="POST">
+            <div class="col-md-12">
+                <form action="{{ route('news.update', $news->id) }}" method="POST">
                     {{ csrf_field() }}
+                    {{ method_field('PUT') }}
                     <div class="form-group">
                         <label for=""><span class="text-danger">*</span>文章标题</label>
-                        <input type="text" class="form-control" name="title" placeholder="请输入文章标题" required>
+                        <input type="text"
+                               class="form-control"
+                               value="{{ $news->title }}"
+                               name="title"
+                               placeholder="请输入文章标题"
+                               required>
                     </div>
                     <div class="form-group">
                         <label for=""><span class="text-danger">*</span>文章栏目</label>
@@ -32,7 +38,7 @@
                     <div class="form-group">
                         <label for=""><span class="text-danger">*</span>文章内容</label>
                         <!-- 编辑器容器 -->
-                        <script id="container" name="content" type="text/plain"></script>
+                        <script id="container" name="content" type="text/plain">{!! $news->content !!}</script>
                     </div>
                     <div class="form-group">
                         <button class="btn btn-success">提交</button>

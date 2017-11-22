@@ -6,7 +6,6 @@ use App\Category;
 use App\News;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
 class NewsController extends Controller
 {
@@ -21,7 +20,9 @@ class NewsController extends Controller
     {
         $data = [];
 
-        $data['news'] = News::with('author')->paginate(self::DEFAULT_ROW);
+        $data['news'] = News::with(['author', 'category'])
+                            ->orderBy('id', 'desc')
+                            ->paginate(self::DEFAULT_ROW);
 
         return view('admin.news.index', $data);
     }
@@ -95,7 +96,12 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.news.edit');
+        $data = [];
+
+        $data['news'] = News::findOrFail($id);
+        $data['categories'] = tree(Category::all()->toArray());
+
+        return view('admin.news.edit', $data);
     }
 
     /**
@@ -107,7 +113,13 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, $this->rule(), $this->msg());
+
+        $data = array_merge($request->all(), ['user_id' => $request->user()->id]);
+
+        News::find($id)->update($data);
+
+        return redirect()->route('news.index')->with('success', '文章修改成功');
     }
 
     /**

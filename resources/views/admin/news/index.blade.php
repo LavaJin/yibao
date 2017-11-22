@@ -18,8 +18,9 @@
                 <thead>
                     <tr>
                         <th>#ID</th>
-                        <th>文章标题</th>
-                        <th>文章作者</th>
+                        <th>新闻标题</th>
+                        <th>所属栏目</th>
+                        <th>创建作者</th>
                         <th>创建日期</th>
                         <th>修改日期</th>
                         <th>操作</th>
@@ -30,11 +31,12 @@
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->title }}</td>
+                        <td>{{ $item->category->name }}</td>
                         <td>{{ empty($item->author) ? '未知' : $item->author->name }}</td>
                         <td>{{ $item->created_at }}</td>
                         <td>{{ $item->updated_at }}</td>
                         <td>
-                            <a href="" class="btn btn-primary btn-sm">编辑</a>
+                            <a href="{{ route('news.edit', $item->id) }}" class="btn btn-primary btn-sm">编辑</a>
                             <form action="{{ route('news.destroy', $item->id) }}"
                                     method="post"
                                     style="display: inline-block;">
