@@ -11,7 +11,7 @@
             <a class="btn btn-default btn-sm" href="{{ route('categories.index') }}">返回</a>
         </div>
         <div class="panel-body">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <form action="{{ route('news.store') }}" method="POST">
                     {{ csrf_field() }}
                     <div class="form-group">
