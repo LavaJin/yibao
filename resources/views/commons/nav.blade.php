@@ -63,6 +63,9 @@
                         <li>
                             <a href="{{ route('news.index') }}">新闻管理</a>
                         </li>
+                        <li>
+                            <a href="{{ route('messages.index') }}">留言管理</a>
+                        </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>

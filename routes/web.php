@@ -37,5 +37,12 @@ Route::group([
      * category routes.
      */
     $route->resource('categories', 'CategoryController');
+
+    /**
+     * message routes.
+     */
+    $route->get('messages', 'MessageController@index')->name('messages.index');
 });
+
+Route::post('messages', 'Admin\\MessageController@store');
 
