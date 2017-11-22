@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
+use App\News;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
@@ -116,8 +117,12 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        if (Category::hasChild($category->id)) {
+        if (Category::where('pid', $id)->count()) {
             return back()->with('error', '该栏目下面有子栏目，不能进行删除');
+        }
+
+        if (News::where('category_id', $id)->count()) {
+            return back()->with('error', '该栏目存在文章不能进行删除');
         }
 
         $category->delete();
