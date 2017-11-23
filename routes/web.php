@@ -55,6 +55,10 @@ Route::group([
 });
 
 Route::get('/', 'HomeController@index');
+Route::get('/about', 'HomeController@about');
+Route::get('/contact', 'HomeController@contact');
+Route::get('/case', 'HomeController@successCase');
+Route::get('/category/{id}', 'HomeController@category');
 
 Route::post('messages', 'Admin\\MessageController@store');
 
