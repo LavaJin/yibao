@@ -42,6 +42,16 @@ Route::group([
      * message routes.
      */
     $route->get('messages', 'MessageController@index')->name('messages.index');
+
+    /**
+     * account setting.
+     */
+    $route->any('account', 'AccountController')->name('account.edit');
+
+    /**
+     * site.
+     */
+    $route->post('setting', 'SiteController@setting')->name('site.setting');
 });
 
 Route::post('messages', 'Admin\\MessageController@store');

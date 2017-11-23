@@ -5,10 +5,10 @@
 @endsection
 
 @section('content')
-    <h4 class="page-header">新闻添加</h4>
+    <h4 class="page-header">内容修改</h4>
     <div class="panel panel-default">
         <div class="panel-heading">
-            <a class="btn btn-default btn-sm" href="{{ route('categories.index') }}">返回</a>
+            <a class="btn btn-default btn-sm" href="{{ route('news.index') }}">返回</a>
         </div>
         <div class="panel-body">
             <div class="col-md-12">
@@ -21,7 +21,7 @@
                                class="form-control"
                                value="{{ $news->title }}"
                                name="title"
-                               placeholder="请输入文章标题"
+                               placeholder="请输入标题"
                                required>
                     </div>
                     <div class="form-group">

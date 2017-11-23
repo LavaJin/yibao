@@ -18,7 +18,7 @@
                 <i class="fa fa-user fa-fw"></i> {{ Auth::user()->name }} <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-user">
-                <li><a href="#"><i class="fa fa-user fa-fw"></i> 账号修改</a></li>
+                <li><a href="{{ route('account.edit') }}"><i class="fa fa-user fa-fw"></i> 账号修改</a></li>
                 </li>
                 <li class="divider"></li>
                 <li>
@@ -61,7 +61,7 @@
                             <a href="{{ route('categories.index') }}">栏目管理</a>
                         </li>
                         <li>
-                            <a href="{{ route('news.index') }}">新闻管理</a>
+                            <a href="{{ route('news.index') }}">内容管理</a>
                         </li>
                         <li>
                             <a href="{{ route('messages.index') }}">留言管理</a>

@@ -38,11 +38,11 @@
                     <form method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
                         <fieldset>
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <input id="email" placeholder="请输入登录账号" class="form-control" name="email" value="{{ old('email') }}" required>
-                                @if ($errors->has('email'))
+                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                <input id="email" placeholder="请输入登录账号" class="form-control" name="name" value="{{ old('name') }}" required>
+                                @if ($errors->has('name'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                 @endif
                             </div>
