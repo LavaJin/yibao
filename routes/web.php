@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 
 Auth::routes();
@@ -51,8 +51,10 @@ Route::group([
     /**
      * site.
      */
-    $route->post('setting', 'SiteController@setting')->name('site.setting');
+    $route->post('site/setting', 'SiteController@setting')->name('site.setting');
 });
+
+Route::get('/', 'HomeController@index');
 
 Route::post('messages', 'Admin\\MessageController@store');
 

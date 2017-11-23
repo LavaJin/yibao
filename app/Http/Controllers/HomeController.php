@@ -2,27 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Faker\Provider\Base;
 
-class HomeController extends Controller
+class HomeController extends BaseController
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
+     * 首页
      */
     public function index()
     {
-        return view('admin.home');
+        return view('home');
     }
+
+    /**
+     *
+     */
 }
