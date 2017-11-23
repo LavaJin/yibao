@@ -16,7 +16,7 @@
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
                     <div class="form-group">
-                        <label for=""><span class="text-danger">*</span>文章标题</label>
+                        <label for=""><span class="text-danger">*</span>标题</label>
                         <input type="text"
                                class="form-control"
                                value="{{ $news->title }}"
@@ -25,7 +25,7 @@
                                required>
                     </div>
                     <div class="form-group">
-                        <label for=""><span class="text-danger">*</span>文章栏目</label>
+                        <label for=""><span class="text-danger">*</span>栏目</label>
                         <select name="category_id" class="form-control" required>
                             @foreach($categories as $category)
                                 @php
@@ -36,7 +36,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for=""><span class="text-danger">*</span>文章内容</label>
+                        <label for=""><span class="text-danger">*</span>内容</label>
                         <!-- 编辑器容器 -->
                         <script id="container" name="content" type="text/plain">{!! $news->content !!}</script>
                     </div>
