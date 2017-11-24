@@ -1,144 +1,63 @@
 @extends('layouts.app')
+@section('css')
+<style>
+.myStyless {
+    box-shadow: 0px 0px 32px -7px #000;
+    border-radius: 5px;
+}
+.myStyles {
+    box-shadow: 0px 0px 20px -4px #000;
+    border-radius: 5px;
+}
+</style>
+@endsection
 @section('content')
-    <!-- 内容 -->
     <div id="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3"></div>
-                <div class="col-lg-7" style="margin-left: 10px;">
+                <div class="col-lg-6" style="margin-left: 10px;">
                     <ol class="breadcrumb">
-                        <li>首页</li>
-                        <li  class="active">产品中心</li>
+                      <li><a href="/">首页</a></li>
+                      <li  class="active">{{ $cate->name }}</li>
                     </ol>
                 </div>
             </div>
         </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-2 col-lg-offset-1">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="list-group">
-                                <a href="#" class="list-group-item">
-                                    Cras justo odio
-                                </a>
-                                <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-                                <a href="#" class="list-group-item">Morbi leo risus</a>
-                                <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-                                <a href="#" class="list-group-item">Vestibulum at eros</a>
-                                <a href="#" class="list-group-item">Vestibulum at eros</a>
-                                <a href="#" class="list-group-item">Vestibulum at eros</a>
-                                <a href="#" class="list-group-item">Vestibulum at eros</a>
-                                <a href="#" class="list-group-item">Vestibulum at eros</a>
-                                <a href="#" class="list-group-item">Vestibulum at eros</a>
-                            </div>
+                <div class="col-lg-2 myStyless col-lg-offset-1" style="padding-top:10px;">
+                    @if ($cates->count())
+                        <div class="list-group">
+                          @foreach($cates as $cate)
+                            <a href="/category/{{ $cate->id }}" class="list-group-item">{{ $cate->title }}</a>
+                          @endforeach
                         </div>
-                    </div>
+                    @endif
                 </div>
-                <div class="col-lg-7" style="margin-left: 10px;" >
-                    <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
-                                    <a href="#" style="font-size: 20px; text-decoration: none;color: #000;">
-                                        Basic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel example
-                                    </a>
+                <div class="col-lg-6 myStyles" style="margin-left: 10px;padding-top: 24px;" >
+                    @if($news->count())
+                        @foreach($news as $item)
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                  <div class="panel-body">
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+                                        <a href="#" style="font-size: 20px; text-decoration: none;color: #000;">
+                                            {{ $item->title }}
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 text-right">{{ substr($item->created_at, 0, 10) }}</div>
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 text-right"><a href="/news/{{ $item->id }}">详情</a></div>
+                                  </div>
                                 </div>
-                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 text-right">2017-11-11</div>
-                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 text-right"><a class="" href="details.html">详情</a></div>
                             </div>
-                        </div>
+                        @endforeach
+                    @else
+                        <div class="help-block text-center">暂无内容</div>
+                    @endif
+                    <div class="col-lg-12 text-center">
+                        {{ $news->links() }}
                     </div>
-                    <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <div class="col-lg-8" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
-                                    <a href="#" style="font-size: 20px; text-decoration: none;color: #000;">
-                                        Basic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel example
-                                    </a>
-                                </div>
-                                <div class="col-lg-2 text-right">2017-11-11</div>
-                                <div class="col-lg-2 text-right"><a class="" href="details.html">详情</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <div class="col-lg-8" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
-                                    <a href="#" style="font-size: 20px; text-decoration: none;color: #000;">
-                                        Basic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel example
-                                    </a>
-                                </div>
-                                <div class="col-lg-2 text-right">2017-11-11</div>
-                                <div class="col-lg-2 text-right"><a class="" href="details.html">详情</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <div class="col-lg-8" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
-                                    <a href="#" style="font-size: 20px; text-decoration: none;color: #000;">
-                                        Basic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel example
-                                    </a>
-                                </div>
-                                <div class="col-lg-2 text-right">2017-11-11</div>
-                                <div class="col-lg-2 text-right"><a class="" href="details.html">详情</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <div class="col-lg-8" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
-                                    <a href="#" style="font-size: 20px; text-decoration: none;color: #000;">
-                                        Basic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel example
-                                    </a>
-                                </div>
-                                <div class="col-lg-2 text-right">2017-11-11</div>
-                                <div class="col-lg-2 text-right"><a class="" href="details.html">详情</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <div class="col-lg-8" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
-                                    <a href="#" style="font-size: 20px; text-decoration: none;color: #000;">
-                                        Basic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel exampleBasic panel example
-                                    </a>
-                                </div>
-                                <div class="col-lg-2 text-right">2017-11-11</div>
-                                <div class="col-lg-2 text-right"><a class="" href="details.html">详情</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination pagination-lg">
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
                 </div>
             </div>
         </div>

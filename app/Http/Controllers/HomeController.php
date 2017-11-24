@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\News;
+use App\Category;
 use Faker\Provider\Base;
 
 class HomeController extends BaseController
@@ -31,6 +33,19 @@ class HomeController extends BaseController
 
     public function category($id)
     {
-        return view('category');
+        $cate = Category::find($id);
+        $cates = Category::getCategoriesByPid($id);
+
+        $categoryIds = array_merge($cates->pluck('id')->toArray(), [$id]);
+
+        $news = News::whereIn('category_id', $categoryIds)->orderBy('id', 'desc')->paginate(10);
+
+        return view('category', compact('cate', 'news', 'cates'));
+    }
+
+    public function news($id)
+    {
+        $news = News::with('category')->find($id);
+        return view('news', compact('news'));
     }
 }

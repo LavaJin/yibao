@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="江苏宜宝设备制造有限公司" />
-    <meta name="keywords" content="宜宝设备|板块加热器|机械|设备|加热器" />
+    <meta name="keywords" content="{{ isset($setting['keywords']) ? $setting['keywords'] : config('app.name') }}" />
+    <meta name="description" content="{{ isset($setting['description']) ? $setting['description'] : config('app.name') }}" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>江苏宜宝设备制造有限公司</title>
+    <title>{{ isset($setting['title']) ? $setting['title'] : config('app.name') }}</title>
     <link rel="stylesheet" href="{{ asset('pc/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('pc/css/animate.min.css') }}">
     <style>
@@ -41,12 +41,16 @@
                 border-top: : 1px dashed #ccc;
             }
         }
+        #navbar-nav-ul>li>a{
+          /*color: #000;*/
+          font-size: 18px;
+        }
     </style>
     @yield('css')
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default" style="background: #fff;">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -60,8 +64,8 @@
                 <a class="navbar-brand  visible-lg-block visible-md-block " href="/">江苏宜宝设备制造有限公司</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a class="animated" href="/">首页</a></li>
+                <ul class="nav navbar-nav" id="navbar-nav-ul">
+                    <li><a class="animated" href="/">首页</a></li>
                     @foreach($categories as $category)
                         <li><a class="animated" href="/category/{{ $category->id }}">{{ $category->name }}</a></li>
                     @endforeach
@@ -78,15 +82,15 @@
         <div class="row">
             <div class="carousel slide" id="slidershow" data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li class="active" data-target="#slidershow" data-slide-to="0"></li>
+                    <li  data-target="#slidershow" data-slide-to="0"></li>
                     <li  data-target="#slidershow" data-slide-to="1"></li>
                 </ol>
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="{{ asset('pc/image/banner1.jpg') }}" alt="" class="img-responsive center-block img-thumbnail">
+                        <img src="{{ asset('pc/image/banner1.jpg') }}" alt="" class="img-responsive center-block">
                     </div>
                     <div class="item">
-                        <img src="{{ asset('pc/image/banner2.jpg') }}" alt="" class="img-responsive center-block img-thumbnail">
+                        <img src="{{ asset('pc/image/banner2.jpg') }}" alt="" class="img-responsive center-block">
                     </div>
                 </div>
                 <a href="#slidershow" data-slide="prev" class="left carousel-control" >
@@ -111,6 +115,15 @@
 <script src="{{ asset('pc/js/jquery-3.2.1.js') }}"></script>
 <script src="{{ asset('pc/js/bootstrap.min.js') }}"></script>
 <script>
+    $(function(){
+        var pathname = window.location.pathname;
+        var li = $('#navbar-nav-ul li');
+        for(var i=0; i<li.length; i++) {
+           if (pathname == $(li[i]).find('a').attr('href')) {
+                $(li[i]).addClass('active');
+           }
+        }
+    })
     $("#slidershow").carousel({
         interval: 3000
     });
@@ -119,11 +132,6 @@
     },function(){
         $(".carousel-control").css("display","none")
     });
-    $(".nav li a").hover(function(){
-        $(this).addClass('pulse')
-    },function(){
-        $(this).removeClass('pulse')
-    });
     $(".icons").on("click",function(){ /*zoomOutLeft*/
         $(".newCenter").addClass("zoomInRight");
         setTimeout(function(){
@@ -131,5 +139,6 @@
         },1000)
     })
 </script>
+@yield('js')
 </body>
 </html>

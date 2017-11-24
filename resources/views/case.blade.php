@@ -21,9 +21,8 @@
     <div id="content">
         <div class="container">
             <ol class="breadcrumb">
-                <li>首页</li>
-                <li>案例</li>
-                <li  class="active">公司介绍</li>
+                <li><a href="/">首页</a></li>
+                <li class="active">案例</li>
             </ol>
             <div class="divider"></div>
         </div>
