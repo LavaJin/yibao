@@ -27,10 +27,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-2 myStyless col-lg-offset-1" style="padding-top:10px;">
+                    <h4>分类列表：</h4>
                     @if ($cates->count())
                         <div class="list-group">
                           @foreach($cates as $cate)
-                            <a href="/category/{{ $cate->id }}" class="list-group-item">{{ $cate->title }}</a>
+                            <a href="/category/{{ $cate->id }}" class="btn btn-default btn-block">{{ $cate->name }}</a>
                           @endforeach
                         </div>
                     @endif

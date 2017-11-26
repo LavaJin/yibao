@@ -42,7 +42,7 @@
 @section('javascript')
     <script>
         $(function (e) {
-            $('#pid').val("{{ $category->pid }}");
+            $('#pid').val(parseInt("{{ $category->pid }}"));
         })
     </script>
 @endsection

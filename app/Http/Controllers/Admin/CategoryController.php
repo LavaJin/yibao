@@ -49,9 +49,16 @@ class CategoryController extends Controller
     {
         $this->validate(
             $request,
-            ['name' => ['required', 'unique:categories']],
+            [ 'name' => ['required', 'unique:categories'] ],
             ['name.required' => '栏目名不能为空', 'name.unique' => '栏目名已存在']
         );
+
+        $pid = (int) $request->input('pid');
+
+        if ($pid !== 0) {
+            $category = Category::find($pid);
+            if ($category->pid !== 0) return back()->with('error','最多只能添加两级栏目');
+        }
 
         Category::create($request->all());
 
@@ -76,13 +83,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $data = [];
-
         $data['category'] = Category::findOrFail($id);
         $data['categories'] = tree(Category::all()->toArray());
-
+        
         return view('admin.category.edit', $data);
     }
 
@@ -101,6 +107,13 @@ class CategoryController extends Controller
             ['name' => ['required', Rule::unique('categories')->ignore($id)]],
             ['name.required' => '栏目名不能为空', 'name.unique' => '栏目名已存在']
         );
+
+        $pid = (int) $request->input('pid');
+
+        if ($pid !== 0) {
+            $category = Category::find($pid);
+            if ($category->pid !== 0) return back()->with('error', '最多只能添加两级栏目');
+        }
 
         Category::findOrFail($id)->update($request->all());
 

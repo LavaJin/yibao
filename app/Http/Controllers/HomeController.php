@@ -34,7 +34,11 @@ class HomeController extends BaseController
     public function category($id)
     {
         $cate = Category::find($id);
-        $cates = Category::getCategoriesByPid($id);
+        if ($cate->pid == 0) {
+            $cates = Category::getCategoriesByPid($id);
+        } else {
+            $cates = Category::getCategoriesByPid($cate->pid);
+        }
 
         $categoryIds = array_merge($cates->pluck('id')->toArray(), [$id]);
 
