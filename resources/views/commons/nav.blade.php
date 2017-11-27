@@ -18,7 +18,7 @@
                 <i class="fa fa-user fa-fw"></i> {{ Auth::user()->name }} <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-user">
-                <li><a href="{{ route('account.edit') }}"><i class="fa fa-user fa-fw"></i> 账号修改</a></li>
+                <li><a href="{{ route('account.edit', Auth::user()->id) }}"><i class="fa fa-user fa-fw"></i> 账号修改</a></li>
                 </li>
                 <li class="divider"></li>
                 <li>
@@ -53,6 +53,17 @@
                 </li>
                 <li>
                     <a href="{{ route('home') }}"><i class="fa fa-dashboard fa-fw"></i> 首页</a>
+                <li>
+                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 系统管理<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{ route('account.edit', Auth::user()->id) }}">修改密码</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('account.index') }}">管理员管理</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 内容管理<span class="fa arrow"></span></a>

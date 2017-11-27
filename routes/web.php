@@ -44,10 +44,12 @@ Route::group([
     $route->get('messages', 'MessageController@index')->name('messages.index');
 
     /**
-     * account setting.
+     * admin route.
      */
-    $route->any('account', 'AccountController')->name('account.edit');
-
+    $route->get('accounts', 'AccountController@index')->name('account.index');
+    $route->match(['get', 'post'],'accounts/create', 'AccountController@create')->name('account.create');
+    $route->match(['get', 'put'], 'accounts/{account}/edit', 'AccountController@edit')->name('account.edit');
+    $route->delete('accounts/{account}', 'AccountController@delete')->name('account.delete');
     /**
      * site.
      */
