@@ -13,7 +13,11 @@ class HomeController extends BaseController
      */
     public function index()
     {
-        return view('home');
+        $news = News::whereHas('category', function($query) {
+            return $query->where('name', '新闻资讯');
+        })->first();
+        $category = Category::where('name', '新闻资讯')->first();
+        return view('home', compact('news', 'category'));
     }
 
     public function about()

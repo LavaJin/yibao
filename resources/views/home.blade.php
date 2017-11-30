@@ -26,12 +26,12 @@
                 <p class="text-center">
                     <span style="color: #0055ab;">新闻资讯 </span>
                     <span style="color: #949494"> |  New center</span>
-                    <a href="#"><span class="glyphicon glyphicon-arrow-right"></span></a>
+                    <a href="/category/{{ $category->id }}"><span class="glyphicon glyphicon-arrow-right"></span></a>
                 </p>
                 <div class="animated newCenter text-center">
-                    <h5 style="font-weight: bold;">江苏宜宝设备有限公司</h5>
-                    <span style="color: #949494">2017-04-23</span>
-                    <p> 江苏宜宝设备有限公司欢迎大家！...</p>
+                    {{-- <h5 style="font-weight: bold;">{{  $news->title }}</h5> --}}
+                    <span style="color: #949494">{{ $news->created_at }} <a href="/news/{{ $news->id }}">查看</a> </span>
+                    <p> {{  $news->title }}</p>
                 </div>
                 <div class="text-center" style="margin-top: 18px;">
                     <span class="glyphicon icons glyphicon-triangle-left" style="margin-right: 10px;"></span>
@@ -42,7 +42,7 @@
                 <p class="text-center">
                     <span style="color: #0055ab;">公司简介 </span>
                     <span style="color: #949494"> |  About us</span>
-                    <a href="#"><span class="glyphicon glyphicon-arrow-right"></span></a>
+                    <a href="/about"><span class="glyphicon glyphicon-arrow-right"></span></a>
                 </p>
                 <div>
                     <p style="text-indent:25px;padding-bottom: 13px;">江苏宜宝设备制造有限公司成立于2015年，总投资1500万，主要从事高效节能设备 —板式换热器以及换热机组，蒸发冷凝设备及其系统的生产销售；及换热设备维护和供热节能系统的技术咨询与服务。

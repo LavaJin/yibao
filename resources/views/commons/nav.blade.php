@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">宜宝设备制造有限公司 后台管理</a>
+        <span class="navbar-brand">宜宝设备制造有限公司 后台管理</span>
     </div>
     <!-- /.navbar-header -->
 

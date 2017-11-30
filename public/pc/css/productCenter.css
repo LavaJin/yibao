@@ -1,0 +1,81 @@
+.carousel-control {
+	display: none;
+	width:6%;
+}
+.carousel-indicators .active {
+    width: 12px;
+    height: 12px;
+    margin: 0;
+    background-color: red;
+}
+.navbar {
+	margin-bottom: 0px;
+}
+.col-lg-4 {
+	margin-top: 10px;
+}
+#content {
+	margin-top: 20px;
+}
+.carousel-indicators {
+    bottom: 0px; 
+}
+.panel-body > .col-lg-2 {
+	padding: 5px 0px;
+}
+.myStyless {
+    box-shadow: 0px 0px 32px -7px #000;
+    border-radius: 5px;
+}
+.myStyles {
+    box-shadow: 0px 0px 20px -4px #000;
+    border-radius: 5px;
+}
+.panel-default>.panel-heading {
+    color: #fff;
+    background-color: #323232;
+    border-color: #ddd;
+}
+.panel-title {
+	text-align: center;
+}
+a.list-group-item {
+	text-align: center;
+}
+.list-group-item {
+    border: 1px solid #fff;
+}
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent; 
+    border-radius: 4px; 
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05); 
+    box-shadow: 0 3px 25px rgba(0,0,0,.05);
+}
+.ProductDetails {
+	padding: 0px;
+}
+.ProductList {
+	margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+	color: #fff;
+    background-color: #323232;
+    border-color: #ddd;
+    padding: 10px 15px;
+    text-align: center;
+    border-radius: 3px;
+}
+blockquote {
+	font-size: 14px;
+	padding: 5px 20px;
+    margin: 30px 0 10px
+}
+blockquote p {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    margin: 0 10px 20px;
+	padding-right: 30px;
+}
