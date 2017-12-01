@@ -26,7 +26,7 @@
                 <p class="text-center">
                     <span style="color: #0055ab;">新闻资讯 </span>
                     <span style="color: #949494"> |  New center</span>
-                    <a href="/category/{{ $category->id }}"><span class="glyphicon glyphicon-arrow-right"></span></a>
+                    <a href="/category/{{$category->id }}"><span class="glyphicon glyphicon-arrow-right"></span></a>
                 </p>
                 <div class="animated newCenter text-center">
                     {{-- <h5 style="font-weight: bold;">{{  $news->title }}</h5> --}}
