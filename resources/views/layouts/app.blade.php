@@ -70,8 +70,8 @@
                     @foreach($categories as $category)
                         <li><a class="animated" href="/category/{{ $category->id }}">{{ $category->name }}</a></li>
                     @endforeach
-                    {{--<li><a class="animated" href="/case">成功案例</a></li>--}}
-                    {{--<li><a class="animated" href="/contact">联系我们</a></li>--}}
+                    <li><a class="animated" href="/case">成功案例</a></li>
+                    <li><a class="animated" href="/contact">联系我们</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
