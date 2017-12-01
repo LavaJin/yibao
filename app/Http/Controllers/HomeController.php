@@ -15,7 +15,7 @@ class HomeController extends BaseController
     {
         $news = News::whereHas('category', function($query) {
             return $query->where('name', '新闻资讯');
-        })->first();
+        })->orderBy('id', 'desc')->first();
         $category = Category::where('name', '新闻资讯')->first();
         return view('home', compact('news', 'category'));
     }
