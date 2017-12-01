@@ -66,12 +66,12 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav" id="navbar-nav-ul">
                     <li><a class="animated" href="/">首页</a></li>
-                    <li><a class="animated" href="/about">关于我们</a></li>
+                    {{--<li><a class="animated" href="/about">关于我们</a></li>--}}
                     @foreach($categories as $category)
                         <li><a class="animated" href="/category/{{ $category->id }}">{{ $category->name }}</a></li>
                     @endforeach
-                    <li><a class="animated" href="/case">成功案例</a></li>
-                    <li><a class="animated" href="/contact">联系我们</a></li>
+                    {{--<li><a class="animated" href="/case">成功案例</a></li>--}}
+                    {{--<li><a class="animated" href="/contact">联系我们</a></li>--}}
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
