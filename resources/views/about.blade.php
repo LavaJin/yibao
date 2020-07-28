@@ -22,7 +22,7 @@
         <div class="container">
             <ol class="breadcrumb">
                 <li><a href="/">首页</a></li>
-                <li class="active">关王我们</li>
+                <li class="active">关于我们</li>
             </ol>
             <div class="divider"></div>
         </div>
